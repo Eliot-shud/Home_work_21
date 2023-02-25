@@ -35,11 +35,11 @@ def main():
     print('\nДобрый день!\n')
 
     while True:
-        # вывод содержимого складов
+        # Вывод содержимого складов
         for storage in storages:
             print(f'Сейчас в {storage}:\n {storages[storage].items}')
 
-        # ввод от пользователя
+        # Ввод от пользователя
         user_input = input(
             'Введите запрос в формате "Достать 3 печеньки из склад в магазин"\n'
             'Введите "стоп" или "stop", если хотите закончить:\n'
@@ -48,14 +48,14 @@ def main():
         if user_input in ('stop', 'стоп'):
             break
 
-        # ввод пользователя
+        # Ввод пользователя
         try:
             request = Request(request=user_input, storages=storages)
         except RequestError as error:
             print(error.message)
             continue
 
-        # доставляем товар
+        # Доставка товара
         courier = Courier(request=request, storages=storages)
         try:
             courier.move()

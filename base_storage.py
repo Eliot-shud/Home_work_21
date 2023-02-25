@@ -10,11 +10,11 @@ class BaseStorage(Storage):
         self.__capacity = capacity
 
     def add(self, name, amount):
-        # проверяем, достаточно ли места
+        # проверка вместимости склада
         if self.get_free_space() < amount:
             raise NotEnoughSpace
 
-        # добавляем товар
+        # добавление товаров
         if name in self.__items:
             self.__items[name] += amount
         else:
